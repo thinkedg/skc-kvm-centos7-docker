@@ -1,0 +1,14 @@
+---
+# tasks file for roles/update-centos
+
+- name: upgrade all packages
+  yum:
+    name=*
+    state=latest
+
+- name: install tmux
+  yum:
+    name=tmux
+    state=latest
+    
+  

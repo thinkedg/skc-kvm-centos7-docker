@@ -1,0 +1,22 @@
+---
+# tasks file for roles/install-docker
+
+- name: install yum-utils
+  yum: pkg={{item}} state=latest
+  with_items:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+
+- name: set up the stabel repository
+  shell: yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: install docker
+  yum:
+    name: docker-ce
+    state: latest
+    
+- name: add the edg user to the docker group
+  shell: usermod -a -G docker edg

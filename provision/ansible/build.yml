@@ -1,0 +1,30 @@
+---
+
+- hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  gather_facts: False
+  
+  pre_tasks:
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      changed_when: False
+    - setup: # aka gather_facts
+  
+  tasks:
+
+  - name: this is a test
+    debug: msg="this is a test"
+     
+  roles:
+
+    - update-centos
+    - setup-python
+    - add-user
+    - install-emacs
+    - install-ansible
+    - install-docker
+    - install-docker-compose
+    

@@ -1,0 +1,7 @@
+---
+# tasks file for roles/install-emacs
+
+- name: install emacs
+  package:
+    name: emacs
+    state: latest

@@ -1,0 +1,24 @@
+---
+# tasks file for roles/setup-python
+
+- name: settup python env
+  debug: msg='setting up the python env'
+
+- name: install epel-release
+  package:
+    name: epel-release
+    state: latest
+    
+- name: make sure we have setup tools
+  package:
+    name: python-setuptools
+    state: present
+    
+- name: install pip
+  package: 
+    name: python-pip
+    state: latest
+
+- name: install the virtualenv
+  pip:
+    name: virtualenv

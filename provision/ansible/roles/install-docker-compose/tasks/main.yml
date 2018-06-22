@@ -1,0 +1,7 @@
+---
+# tasks file for roles/install-docker-compose
+
+- name: install docker compose
+  pip:
+    name: docker-compose
+  
